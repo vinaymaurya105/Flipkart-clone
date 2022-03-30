@@ -41,8 +41,8 @@ export const bannerData = [
   "https://rukminim1.flixcart.com/flap/3376/560/image/d117a62eb5fbb8e1.jpg?q=50",
   "https://rukminim1.flixcart.com/flap/3376/560/image/57267a180af306fe.jpg?q=50",
   "https://rukminim1.flixcart.com/flap/3376/560/image/ae9966569097a8b7.jpg?q=50",
-  // "https://rukminim1.flixcart.com/flap/3376/560/image/f6202f13b6f89b03.jpg?q=50",
-  "https://rukminim2.flixcart.com/flap/3376/560/image/6527cd14b04526ca.jpg?q=50",
+  // "https://rukminim2.flixcart.com/flap/3376/560/image/6527cd14b04526ca.jpg?q=50",
   "https://rukminim2.flixcart.com/flap/3376/560/image/ff938f15fd1feb73.jpg?q=50",
   "https://rukminim2.flixcart.com/flap/3376/560/image/1dabead2e32289e4.jpeg?q=50",
+  "https://rukminim2.flixcart.com/flap/3376/560/image/e4516bab23d84d7f.jpg?q=50",
 ];
