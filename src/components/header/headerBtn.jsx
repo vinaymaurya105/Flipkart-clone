@@ -1,14 +1,28 @@
-import { Box, Button, Typography, makeStyles, Badge } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Typography,
+  makeStyles,
+  Badge,
+  Tooltip,
+} from "@material-ui/core";
+
+// import icon
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Link } from "react-router-dom";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+
+//import components
+import LoginT from "./loginT";
+import MoreT from "./moreT";
 
 const usestyle = makeStyles((theme) => ({
   loginBtn: {
     background: "#ffffff",
     color: "#2874f0",
     textTransform: "unset",
-    fontWeight: 600,
+    fontWeight: 550,
     fontSize: 16,
     padding: "1px 37px",
     borderRadius: 2,
@@ -47,23 +61,47 @@ const usestyle = makeStyles((theme) => ({
   cart: {
     marginLeft: 8,
   },
+  arrow: {
+    fontSize: 22,
+    color: "#ffffff",
+  },
 }));
 
 function HeaderBtn() {
   const classes = usestyle();
   return (
     <Box className={classes.container}>
-      <Link>
-        <Button variant="contained" className={classes.loginBtn}>
-          Login
-        </Button>
-      </Link>
-      <Link>
-        <Box className={classes.iconWrap}>
-          <Typography className={classes.text}>More</Typography>
-          <ExpandMoreIcon className={classes.icon} />
-        </Box>
-      </Link>
+      <Tooltip
+        classes={{ arrow: classes.arrow }}
+        title={<LoginT />}
+        interactive={true}
+        arrow
+      >
+        <Link>
+          <Button variant="contained" className={classes.loginBtn}>
+            Login
+          </Button>
+        </Link>
+      </Tooltip>
+
+      <Tooltip
+        title={<MoreT />}
+        interactive={true}
+        arrow
+        classes={{ arrow: classes.arrow }}
+      >
+        <Link>
+          <Box className={classes.iconWrap}>
+            <Typography className={classes.text}>More</Typography>
+            {onmousemove ? (
+              <ExpandLessIcon className={classes.icon} />
+            ) : (
+              <ExpandMoreIcon className={classes.icon} />
+            )}
+          </Box>
+        </Link>
+      </Tooltip>
+
       <Link to="/cart" className={classes.wraper}>
         <Badge badgeContent={4} color="error">
           <ShoppingCartIcon />
