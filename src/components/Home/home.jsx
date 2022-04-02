@@ -4,6 +4,8 @@ import { Box, makeStyles } from "@material-ui/core";
 import Baner from "./baner";
 import Navbar from "./navBar";
 
+//Styling in component using class
+
 const useStyle = makeStyles({
   container: {
     padding: 10,

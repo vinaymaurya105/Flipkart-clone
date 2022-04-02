@@ -31,6 +31,7 @@ const usestyle = makeStyles((theme) => ({
       background: "white",
     },
   },
+
   container: {
     margin: " 0 6% 0 auto ",
     display: "flex",
@@ -42,18 +43,22 @@ const usestyle = makeStyles((theme) => ({
       color: "#fff",
     },
   },
+
   wraper: {
     display: "flex",
     marginTop: 5,
     cursor: "pointer",
   },
+
   iconWrap: {
     display: "flex",
     cursor: "pointer",
   },
+
   text: {
     marginTop: 5,
   },
+
   icon: {
     width: 16,
     marginTop: 5,
@@ -61,6 +66,7 @@ const usestyle = makeStyles((theme) => ({
   cart: {
     marginLeft: 8,
   },
+
   arrow: {
     fontSize: 22,
     color: "#ffffff",
@@ -69,6 +75,7 @@ const usestyle = makeStyles((theme) => ({
 
 function HeaderBtn() {
   const classes = usestyle();
+
   return (
     <Box className={classes.container}>
       <Tooltip

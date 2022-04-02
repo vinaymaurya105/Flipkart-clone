@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 import SearchBar from "./searchBar";
 import HeadreBtn from "./headerBtn";
 
@@ -21,21 +21,26 @@ const usestyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: "#fff",
   },
+
   header: {
     background: "#2874f0",
     height: 55,
     boxShadow: "none",
   },
+
   logo: {
     height: 20,
   },
+
   subContainer: {
     display: "flex",
   },
+
   subLogo: {
     height: 10,
     marginLeft: 1,
   },
+
   subHeading: {
     fontSize: 11,
     fontStyle: "italic",
@@ -60,10 +65,12 @@ function Header() {
               alt="flipKart logo"
               className={classes.logo}
             />
+
             <Box className={classes.subContainer}>
               <Typography className={classes.subHeading}>
                 Explore <span style={{ color: "#ffe500" }}>Plus</span>
               </Typography>
+
               <img
                 src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png"
                 alt="plus-logo"
@@ -71,7 +78,9 @@ function Header() {
               />
             </Box>
           </Link>
+
           <SearchBar />
+
           <HeadreBtn />
         </ToolBar>
       </AppBar>

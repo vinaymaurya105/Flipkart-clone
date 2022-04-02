@@ -10,6 +10,7 @@ const useStyle = makeStyles((theme) => ({
     height: 36,
     display: "flex",
   },
+
   searchIcon: {
     padding: 7,
     height: "100%",
@@ -17,10 +18,12 @@ const useStyle = makeStyles((theme) => ({
     color: "blue",
     cursor: "pointer",
   },
+
   inputRoot: {
     width: "100%",
     fontSize: 14,
   },
+
   inputInput: {
     paddingLeft: 15,
   },
@@ -28,6 +31,7 @@ const useStyle = makeStyles((theme) => ({
 
 function SearchBar() {
   const classes = useStyle();
+
   return (
     <div className={classes.search}>
       <InputBase
@@ -38,6 +42,7 @@ function SearchBar() {
         }}
         inputProps={{ "aria-label": "search" }}
       />
+
       <div className={classes.searchIcon}>
         <SearchIcon />
       </div>

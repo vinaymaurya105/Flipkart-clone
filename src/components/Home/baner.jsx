@@ -2,6 +2,8 @@ import Carousel from "react-material-ui-carousel";
 import { bannerData } from "../../Data/data";
 import { makeStyles } from "@material-ui/core";
 
+//Styling in component using class
+
 const useStyle = makeStyles({
   img: {
     width: "100%",
@@ -12,6 +14,7 @@ const useStyle = makeStyles({
 
 function Baner() {
   const classes = useStyle();
+
   return (
     <Carousel
       autoPlay={true}

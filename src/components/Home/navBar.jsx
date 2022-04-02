@@ -1,6 +1,8 @@
 import { navData } from "../../Data/data";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 
+//Styling in component using class
+
 const useStyle = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -9,6 +11,7 @@ const useStyle = makeStyles((theme) => ({
       marginLeft: 45,
     },
   },
+
   wraper: {
     textAlign: "center",
     padding: 12,
@@ -17,9 +20,11 @@ const useStyle = makeStyles((theme) => ({
       color: "blue",
     },
   },
+
   image: {
     width: 65,
   },
+
   text: {
     fontSize: 14,
     fontWeight: 600,
@@ -28,11 +33,13 @@ const useStyle = makeStyles((theme) => ({
 
 function Navbar() {
   const classes = useStyle();
+
   return (
     <Box className={classes.container}>
       {navData.map((data) => (
         <Box className={classes.wraper}>
           <img src={data.url} alt="img" className={classes.image} />
+
           <Typography className={classes.text}>{data.text}</Typography>
         </Box>
       ))}
