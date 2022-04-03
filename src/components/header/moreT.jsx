@@ -12,6 +12,7 @@ const useStyle = makeStyles({
     borderRadius: 3,
     boxShadow: "0 2px  2px 2px #f2f2f2",
   },
+
   container: {
     display: "flex",
     alignItems: "center",
@@ -32,6 +33,7 @@ const useStyle = makeStyles({
 
 function MoreT() {
   const classes = useStyle();
+
   return (
     <Box className={classes.wraper}>
       <Box className={classes.container} style={{ borderTop: "none" }}>

@@ -80,8 +80,6 @@ function LoginT() {
         <span className={classes.span}>WishList</span>
       </Box>
 
-      {/* <Box className={classes.wraper}></Box> */}
-
       <Box className={classes.wraper}>
         <AccountBalanceWalletIcon fontSize="small" color="primary" />
         <span className={classes.span}>Gift Cards</span>

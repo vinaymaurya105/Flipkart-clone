@@ -15,9 +15,11 @@ const useStyle = makeStyles({
 
 function Home() {
   const classes = useStyle();
+
   return (
     <div>
       <Navbar />
+
       <Box className={classes.container}>
         <Baner />
       </Box>
