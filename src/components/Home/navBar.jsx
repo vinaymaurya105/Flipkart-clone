@@ -36,8 +36,8 @@ function Navbar() {
 
   return (
     <Box className={classes.container}>
-      {navData.map((data) => (
-        <Box className={classes.wraper}>
+      {navData.map((data, id) => (
+        <Box className={classes.wraper} key={id}>
           <img src={data.url} alt="img" className={classes.image} />
 
           <Typography className={classes.text}>{data.text}</Typography>

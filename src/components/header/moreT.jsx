@@ -19,7 +19,7 @@ const useStyle = makeStyles({
     fontSize: 16,
     padding: 10,
     cursor: "pointer",
-    borderTop: "1px solid rgb(212, 212, 212)",
+    borderTop: "1px solid rgba(238, 229, 229, 0.575)",
     "&:hover": {
       background: "#f8f9fa",
     },

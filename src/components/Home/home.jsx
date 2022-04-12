@@ -3,6 +3,7 @@ import React from "react";
 import { Box, makeStyles } from "@material-ui/core";
 import Baner from "./baner";
 import Navbar from "./navBar";
+import MidSection from "./midSection";
 
 //Styling in component using class
 
@@ -23,6 +24,7 @@ function Home() {
       <Box className={classes.container}>
         <Baner />
       </Box>
+      <MidSection />
     </div>
   );
 }

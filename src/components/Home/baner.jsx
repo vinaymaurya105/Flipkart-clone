@@ -1,6 +1,8 @@
 import Carousel from "react-material-ui-carousel";
-import { bannerData } from "../../Data/data";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Box } from "@material-ui/core";
+
+// data
+import { bannerData, dealData } from "../../Data/data";
 
 //Styling in component using class
 
@@ -16,26 +18,28 @@ function Baner() {
   const classes = useStyle();
 
   return (
-    <Carousel
-      autoPlay={true}
-      animation="slide"
-      navButtonsAlwaysVisible={true}
-      cycleNavigation={true}
-      indicators={false}
-      navButtonsProps={{
-        style: {
-          background: "#ffffff",
-          color: "black",
-          borderRadius: 2,
-          margin: 0,
-          cursor: "unset",
-        },
-      }}
-    >
-      {bannerData.map((image) => (
-        <img src={image} className={classes.img} />
-      ))}
-    </Carousel>
+    <Box>
+      <Carousel
+        autoPlay={true}
+        animation="slide"
+        navButtonsAlwaysVisible={true}
+        cycleNavigation={true}
+        indicators={false}
+        navButtonsProps={{
+          style: {
+            background: "#ffffff",
+            color: "black",
+            borderRadius: 2,
+            margin: 0,
+            cursor: "unset",
+          },
+        }}
+      >
+        {bannerData.map((image, id) => (
+          <img src={image} className={classes.img} key={id} />
+        ))}
+      </Carousel>
+    </Box>
   );
 }
 

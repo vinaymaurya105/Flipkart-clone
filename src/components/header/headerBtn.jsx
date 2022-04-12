@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import {
   Box,
   Button,
@@ -16,6 +18,7 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 //import components
 import LoginT from "./loginT";
 import MoreT from "./moreT";
+import LoginDialog from "../../login/loginDialog";
 
 const usestyle = makeStyles((theme) => ({
   loginBtn: {
@@ -74,6 +77,8 @@ const usestyle = makeStyles((theme) => ({
 }));
 
 function HeaderBtn() {
+  const [open, setOpen] = useState(false);
+
   const classes = usestyle();
 
   return (
@@ -84,8 +89,12 @@ function HeaderBtn() {
         interactive={true}
         arrow
       >
-        <Link>
-          <Button variant="contained" className={classes.loginBtn}>
+        <Link to="">
+          <Button
+            variant="contained"
+            className={classes.loginBtn}
+            onClick={() => setOpen(true)}
+          >
             Login
           </Button>
         </Link>
@@ -97,7 +106,7 @@ function HeaderBtn() {
         arrow
         classes={{ arrow: classes.arrow }}
       >
-        <Link>
+        <Link to="">
           <Box className={classes.iconWrap}>
             <Typography className={classes.text}>More</Typography>
             {onmousemove ? (
@@ -115,6 +124,8 @@ function HeaderBtn() {
         </Badge>
         <Typography className={classes.cart}>Cart</Typography>
       </Link>
+
+      <LoginDialog open={open} setOpen={setOpen} />
     </Box>
   );
 }

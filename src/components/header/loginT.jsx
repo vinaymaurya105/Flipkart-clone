@@ -17,7 +17,7 @@ const usestyle = makeStyles({
     display: "flex",
     alignItems: "center",
     fontSize: 16,
-    borderTop: "1px solid rgb(212, 212, 212)",
+    borderTop: "1px solid rgba(238, 229, 229, 0.575)",
     padding: 10,
     cursor: "pointer",
     "&:hover": {
@@ -76,7 +76,7 @@ function LoginT() {
       </Box>
 
       <Box className={classes.wraper}>
-        <FavoriteIcon fontSize="small " color="primary" />
+        <FavoriteIcon fontSize="small" color="primary" />
         <span className={classes.span}>WishList</span>
       </Box>
 
