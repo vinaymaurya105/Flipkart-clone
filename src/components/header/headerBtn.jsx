@@ -16,9 +16,9 @@ import { Link } from "react-router-dom";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 //import components
-import LoginT from "./loginT";
-import MoreT from "./moreT";
-import LoginDialog from "../../login/loginDialog";
+import LoginT from "./tooltip/loginT";
+import MoreT from "./tooltip/moreT";
+import LoginDialog from "../login/loginDialog";
 
 const usestyle = makeStyles((theme) => ({
   loginBtn: {

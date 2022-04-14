@@ -45,6 +45,9 @@ const usestyle = makeStyles({
     color: "blue",
     marginLeft: 30,
   },
+  icon: {
+    color: "#2874f0",
+  },
 });
 
 function LoginT() {
@@ -57,7 +60,7 @@ function LoginT() {
       </Box>
 
       <Box className={classes.wraper}>
-        <AccountCircleIcon fontSize="small" color="primary" />
+        <AccountCircleIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>My Profile</span>
       </Box>
 
@@ -71,17 +74,17 @@ function LoginT() {
       </Box>
 
       <Box className={classes.wraper}>
-        <StorefrontIcon fontSize="small" color="primary" />
+        <StorefrontIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>Orders</span>
       </Box>
 
       <Box className={classes.wraper}>
-        <FavoriteIcon fontSize="small" color="primary" />
+        <FavoriteIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>WishList</span>
       </Box>
 
       <Box className={classes.wraper}>
-        <AccountBalanceWalletIcon fontSize="small" color="primary" />
+        <AccountBalanceWalletIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>Gift Cards</span>
       </Box>
     </Box>

@@ -113,22 +113,24 @@ export const dealData = [
     discount: "Upto 80% Off",
     tagline: "Ab Exerciser, Yoga & more",
   },
-  {
-    id: "product7",
-    url: "https://rukminim2.flixcart.com/image/200/200/jn3hocw0/microphone/d/c/e/boya-by-m1-3-5mm-electret-condenser-microphone-with-1-4-adapter-original-imaf9v2jhhakavks.jpeg?q=70",
-    title: {
-      shortTitle: "Sports & Fitness Essentials",
-    },
-    discount: "Upto 80% Off",
-    tagline: "Ab Exerciser, Yoga & more",
-  },
-  {
-    id: "product8",
-    url: "https://rukminim2.flixcart.com/image/200/200/ktvucnk0/diary-notebook/u/r/4/forever-mine-8906065887568-doodle-original-imag74yg9pzgaszd.jpeg?q=70",
-    title: {
-      shortTitle: "Sports & Fitness Essentials",
-    },
-    discount: "Upto 80% Off",
-    tagline: "Ab Exerciser, Yoga & more",
-  },
+];
+
+export const plusData = [
+  "https://rukminim2.flixcart.com/lockin/100/11/images/Non-Member_02_DT_post_upgrade.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/11/images/Non-MemberV2_02_5thCutover_DT_postUpgrade.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/45/images/Non-Member_03_DT_post_upgrade.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/44/images/Non-Member_04_DT_post_upgrade.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/45/images/Non-Member_05_DT_post_upgrade.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/44/images/nonplus_DT_banner.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/45/images/Non-Member_07_DT_post_upgrade.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/44/images/Non-Member_08_DT_post_upgrade.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/37/images/Rp1.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/40/images/cncnew.png?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/45/images/nonplus200.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/45/images/Non-Member_10_DT_post_upgrade.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/45/images/Desktop_Non-Member_15_27June2019.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/45/images/Desktop_Non-Member_16_27June2019.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/44/images/nonplus200.newfaq.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/45/images/Desktop_Non-Member_18_27June2019.jpg?q=50",
+  "https://rukminim2.flixcart.com/lockin/100/33/images/Desktop_Non-Member_19_27June2019.jpg?q=50",
 ];

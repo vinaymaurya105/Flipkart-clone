@@ -29,6 +29,9 @@ const useStyle = makeStyles({
     margin: "11px 18px   ",
     color: "rgba(0, 0, 0, 0.8)",
   },
+  icon: {
+    color: "#2874f0",
+  },
 });
 
 function MoreT() {
@@ -37,27 +40,27 @@ function MoreT() {
   return (
     <Box className={classes.wraper}>
       <Box className={classes.container} style={{ borderTop: "none" }}>
-        <NotificationsIcon fontSize="small" color="primary" />
+        <NotificationsIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>Notification Preferences</span>
       </Box>
 
       <Box className={classes.container}>
-        <LocalMallIcon fontSize="small" color="primary" />
+        <LocalMallIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>Sell on Flipkart</span>
       </Box>
 
       <Box className={classes.container}>
-        <LiveHelpIcon fontSize="small" color="primary" />
+        <LiveHelpIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>24x7 Customer Care</span>
       </Box>
 
       <Box className={classes.container}>
-        <TrendingUpIcon fontSize="small" color="primary" />
+        <TrendingUpIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>Advertise</span>
       </Box>
 
       <Box className={classes.container}>
-        <GetAppIcon fontSize="small" color="primary" />
+        <GetAppIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>Download App</span>
       </Box>
     </Box>

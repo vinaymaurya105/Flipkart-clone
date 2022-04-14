@@ -34,6 +34,9 @@ const usestyles = makeStyles((theme) => ({
 
   subContainer: {
     display: "flex",
+    "&:hover": {
+      textDecoration: "underline",
+    },
   },
 
   subLogo: {

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import CloseIcon from "@material-ui/icons/Close";
+import React, { useState, useEffect } from "react";
 
 import {
   Box,
@@ -10,6 +9,9 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
+import axios from "axios";
+
+const URL = "http://localhost:8080";
 
 const useStyle = makeStyles({
   dialogPaper: {
@@ -139,6 +141,19 @@ const useStyle = makeStyles({
   },
 });
 
+const signUpInitialValue = {
+  firstName: "",
+  lastName: "",
+  userName: "",
+  email: "",
+  password: "",
+  phone: "",
+};
+
+const loginInitialValue = {
+  email: "",
+  password: "",
+};
 const accountInitialValues = {
   login: {
     view: "login",
@@ -155,8 +170,8 @@ const accountInitialValues = {
 function LoginDialog({ open, setOpen }) {
   const classes = useStyle();
 
-  const [login, setLogin] = useState();
-  const [signup, setSignup] = useState();
+  const [login, setLogin] = useState(loginInitialValue);
+  const [signup, setSignup] = useState(signUpInitialValue);
   const [account, toggleAccount] = useState(accountInitialValues.login);
 
   const handleClose = () => {
@@ -165,11 +180,16 @@ function LoginDialog({ open, setOpen }) {
   };
 
   const handleChange = (e) => {
-    setLogin({ ...login, [e.target.name]: e.target.value });
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setLogin({ ...login, [name]: value });
   };
 
   const handleSignupChange = (e) => {
-    setSignup({ ...signup, [e.target.name]: e.target.value });
+    let name = e.target.name;
+    let value = e.target.value;
+    setSignup({ ...signup, [name]: value });
   };
 
   const toggleSignup = () => {
@@ -178,6 +198,47 @@ function LoginDialog({ open, setOpen }) {
 
   const toggleLogin = () => {
     toggleAccount(accountInitialValues.login);
+  };
+
+  const loginUser = (e) => {
+    const { email, password } = login;
+    axios
+      .post(`${URL}/api/signin`, { email, password })
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.data.user.fullName);
+        setLogin(loginInitialValue);
+        handleClose();
+        alert("login Sucessful");
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log("clicked in catch section");
+      });
+  };
+
+  const userSignup = async (e) => {
+    e.preventDefault();
+
+    const { firstName, lastName, userName, email, password, phone } = signup;
+    await axios
+      .post(`${URL}/api/signup`, {
+        firstName,
+        lastName,
+        userName,
+        email,
+        password,
+        phone,
+      })
+      .then((res) => {
+        console.log(res.data);
+        alert(res.data.message);
+        setSignup(signUpInitialValue);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err);
+      });
   };
 
   return (
@@ -203,7 +264,8 @@ function LoginDialog({ open, setOpen }) {
                 autoFocus={true}
                 onChange={handleChange}
                 label="Enter Email / Mobile number"
-                name="username"
+                name="email"
+                value={login.email}
                 InputProps={{ classes: { underline: classes.textField } }}
               />
 
@@ -211,6 +273,7 @@ function LoginDialog({ open, setOpen }) {
                 onChange={handleChange}
                 label="Enter Password"
                 name="password"
+                value={login.password}
                 InputProps={{ classes: { underline: classes.textField } }}
               />
 
@@ -221,7 +284,11 @@ function LoginDialog({ open, setOpen }) {
                 <span className={classes.span}> Privacy Policy </span> .
               </Typography>
 
-              <Button variant="contained" className={classes.loginBtn}>
+              <Button
+                variant="contained"
+                className={classes.loginBtn}
+                onClick={loginUser}
+              >
                 Login
               </Button>
 
@@ -249,43 +316,57 @@ function LoginDialog({ open, setOpen }) {
             <Box className={classes.signup}>
               <TextField
                 autoFocus={true}
+                autoComplete="off"
                 label="Enter First Name"
-                name=" first name"
+                name="firstName"
+                value={signup.firstName}
                 onChange={handleSignupChange}
                 InputProps={{ classes: { underline: classes.textField } }}
-                size="medium"
               />
               <TextField
                 label="Enter  Last Name"
-                name="last name"
+                name="lastName"
+                value={signup.lastName}
                 onChange={handleSignupChange}
                 InputProps={{ classes: { underline: classes.textField } }}
+                autoComplete="off"
               />
               <TextField
                 label="Enter UserName"
-                name="username"
+                name="userName"
+                value={signup.userName}
                 onChange={handleSignupChange}
                 InputProps={{ classes: { underline: classes.textField } }}
+                autoComplete="off"
               />
               <TextField
                 label="Enter Email"
                 name="email"
+                value={signup.email}
                 onChange={handleSignupChange}
                 InputProps={{ classes: { underline: classes.textField } }}
-              />
-              <TextField
-                label="Enter Password"
-                name="password"
-                onChange={handleSignupChange}
-                InputProps={{ classes: { underline: classes.textField } }}
+                autoComplete="off"
               />
               <TextField
                 label="Enter Mobile number"
                 name="phone"
+                value={signup.phone}
                 onChange={handleSignupChange}
                 InputProps={{ classes: { underline: classes.textField } }}
+                autoComplete="off"
               />
-              <Button className={classes.continueBtn}>Continue</Button>
+              <TextField
+                label="Enter Password"
+                name="password"
+                value={signup.password}
+                onChange={handleSignupChange}
+                InputProps={{ classes: { underline: classes.textField } }}
+                autoComplete="off"
+              />
+
+              <Button className={classes.continueBtn} onClick={userSignup}>
+                Continue
+              </Button>
               <Button className={classes.userBtn} onClick={toggleLogin}>
                 Existing User? Log in
               </Button>
