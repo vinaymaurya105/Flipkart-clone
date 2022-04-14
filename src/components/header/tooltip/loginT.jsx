@@ -4,6 +4,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import StorefrontIcon from "@material-ui/icons/Storefront";
+import ConfirmationNumberIcon from "@material-ui/icons/ConfirmationNumber";
 
 const usestyle = makeStyles({
   container: {
@@ -32,7 +33,6 @@ const usestyle = makeStyles({
 
   logo: {
     height: 20,
-    color: "red",
   },
 
   cust: {
@@ -83,6 +83,10 @@ function LoginT() {
         <span className={classes.span}>WishList</span>
       </Box>
 
+      <Box className={classes.wraper}>
+        <ConfirmationNumberIcon fontSize="small" className={classes.icon} />
+        <span className={classes.span}>Rewards</span>
+      </Box>
       <Box className={classes.wraper}>
         <AccountBalanceWalletIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>Gift Cards</span>

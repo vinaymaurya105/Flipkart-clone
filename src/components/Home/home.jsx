@@ -25,6 +25,11 @@ function Home() {
         <Baner />
       </Box>
       <MidSection />
+      <MidSection />
+      <MidSection />
+      <MidSection />
+      <MidSection />
+      <MidSection />
     </div>
   );
 }

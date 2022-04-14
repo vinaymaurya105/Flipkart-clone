@@ -19,6 +19,7 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import LoginT from "./tooltip/loginT";
 import MoreT from "./tooltip/moreT";
 import LoginDialog from "../login/loginDialog";
+import AfterLoginT from "./tooltip/afterLoginT";
 
 const usestyle = makeStyles((theme) => ({
   loginBtn: {
@@ -85,7 +86,7 @@ function HeaderBtn() {
     <Box className={classes.container}>
       <Tooltip
         classes={{ arrow: classes.arrow }}
-        title={<LoginT />}
+        title={<AfterLoginT />}
         interactive={true}
         arrow
       >
