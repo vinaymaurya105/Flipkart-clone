@@ -12,15 +12,17 @@ const useStyle = makeStyles({
     padding: 10,
     background: "#f2f2f2",
   },
+  wraper: {
+    marginTop: 55,
+  },
 });
 
 function Home() {
   const classes = useStyle();
 
   return (
-    <div>
+    <Box className={classes.wraper}>
       <Navbar />
-
       <Box className={classes.container}>
         <Baner />
       </Box>
@@ -30,7 +32,7 @@ function Home() {
       <MidSection />
       <MidSection />
       <MidSection />
-    </div>
+    </Box>
   );
 }
 

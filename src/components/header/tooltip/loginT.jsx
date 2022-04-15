@@ -5,6 +5,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import StorefrontIcon from "@material-ui/icons/Storefront";
 import ConfirmationNumberIcon from "@material-ui/icons/ConfirmationNumber";
+import { Link } from "react-router-dom";
 
 const usestyle = makeStyles({
   container: {
@@ -20,6 +21,7 @@ const usestyle = makeStyles({
     fontSize: 16,
     borderTop: "1px solid rgba(238, 229, 229, 0.575)",
     padding: 10,
+    textDecoration: "none",
     cursor: "pointer",
     "&:hover": {
       background: "#f8f9fa",
@@ -44,6 +46,9 @@ const usestyle = makeStyles({
     margin: "10px 10px 15px 10px",
     color: "blue",
     marginLeft: 30,
+    "&:hover": {
+      textDecoration: "underline",
+    },
   },
   icon: {
     color: "#2874f0",
@@ -52,41 +57,47 @@ const usestyle = makeStyles({
 
 function LoginT() {
   const classes = usestyle();
+
+  // const handleClick = () => {
+  //   console.log("Clicke");
+  // };
   return (
     <Box className={classes.container}>
       <Box className={classes.wraper} style={{ borderTop: "none" }}>
         <span className={classes.cust}>New customer?</span>
-        <span className={classes.sign}>Sign Up</span>
+        <Link to="/login" style={{ textDecoration: "none" }}>
+          <span className={classes.sign}>Sign Up</span>
+        </Link>
       </Box>
 
-      <Box className={classes.wraper}>
+      <Link to="/login" className={classes.wraper}>
         <AccountCircleIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>My Profile</span>
-      </Box>
+      </Link>
 
-      <Box className={classes.wraper}>
+      <Link to="/plus" className={classes.wraper}>
         <img
           src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png"
           alt="plus-logo"
           className={classes.logo}
         />
         <span className={classes.span}>Flipkart Plus Zone</span>
-      </Box>
+      </Link>
 
-      <Box className={classes.wraper}>
+      <Link to="/login" className={classes.wraper}>
         <StorefrontIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>Orders</span>
-      </Box>
+      </Link>
 
-      <Box className={classes.wraper}>
+      <Link to="/login" className={classes.wraper}>
         <FavoriteIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>WishList</span>
-      </Box>
+      </Link>
 
-      <Box className={classes.wraper}>
+      <Link to="/login" className={classes.wraper}>
         <ConfirmationNumberIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>Rewards</span>
-      </Box>
+      </Link>
       <Box className={classes.wraper}>
         <AccountBalanceWalletIcon fontSize="small" className={classes.icon} />
         <span className={classes.span}>Gift Cards</span>

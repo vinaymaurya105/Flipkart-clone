@@ -60,7 +60,7 @@ const usestyle = makeStyles((theme) => ({
   },
 
   text: {
-    marginTop: 5,
+    marginTop: 3,
   },
 
   icon: {
@@ -79,14 +79,23 @@ const usestyle = makeStyles((theme) => ({
 
 function HeaderBtn() {
   const [open, setOpen] = useState(false);
+  const [openIcon, setOpenIcon] = useState(false);
 
   const classes = usestyle();
+
+  const handleMouseOver = () => {
+    setOpenIcon(true);
+  };
+
+  const handleMouseLeave = () => {
+    setOpenIcon(false);
+  };
 
   return (
     <Box className={classes.container}>
       <Tooltip
         classes={{ arrow: classes.arrow }}
-        title={<AfterLoginT />}
+        title={<LoginT />}
         interactive={true}
         arrow
       >
@@ -108,9 +117,13 @@ function HeaderBtn() {
         classes={{ arrow: classes.arrow }}
       >
         <Link to="">
-          <Box className={classes.iconWrap}>
+          <Box
+            className={classes.iconWrap}
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+          >
             <Typography className={classes.text}>More</Typography>
-            {onmousemove ? (
+            {openIcon ? (
               <ExpandLessIcon className={classes.icon} />
             ) : (
               <ExpandMoreIcon className={classes.icon} />
@@ -120,7 +133,7 @@ function HeaderBtn() {
       </Tooltip>
 
       <Link to="/cart" className={classes.wraper}>
-        <Badge badgeContent={4} color="error">
+        <Badge badgeContent={5} color="error">
           <ShoppingCartIcon />
         </Badge>
         <Typography className={classes.cart}>Cart</Typography>

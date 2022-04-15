@@ -11,6 +11,7 @@ import ConfirmationNumberIcon from "@material-ui/icons/ConfirmationNumber";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
+import { Link } from "react-router-dom";
 
 // Styling
 
@@ -28,7 +29,7 @@ const useStyle = makeStyles({
     alignItems: "center",
     fontSize: 16,
     padding: 10,
-
+    textDecoration: "none",
     cursor: "pointer",
     borderTop: "1px solid rgba(238, 229, 229, 0.575)",
     "&:hover": {
@@ -64,14 +65,14 @@ function AfterLoginT() {
         <span className={classes.span}>SuperCoin Zone</span>
       </Box>
 
-      <Box className={classes.wraper}>
+      <Link to="/plus" className={classes.wraper}>
         <img
           src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png"
           alt="plus-logo"
           className={classes.logo}
         />
         <span className={classes.span}>Flipkart Plus Zone</span>
-      </Box>
+      </Link>
 
       <Box className={classes.wraper}>
         <CallToActionIcon className={classes.icon} />

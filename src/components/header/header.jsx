@@ -18,14 +18,16 @@ const usestyles = makeStyles((theme) => ({
     marginLeft: "12.5%",
     lineHeight: 0,
     cursor: "pointer",
-    textDecoration: "none",
-    color: "#fff",
   },
 
   header: {
     background: "#2874f0",
     height: 55,
     boxShadow: "none",
+  },
+  plus: {
+    textDecoration: "none",
+    color: "#fff",
   },
 
   logo: {
@@ -60,27 +62,31 @@ function Header() {
   const classes = usestyles();
   return (
     <div>
-      <AppBar position="static" className={classes.header}>
+      <AppBar position="fixed" className={classes.header}>
         <ToolBar>
-          <Link to="/" className={classes.container}>
-            <img
-              src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png"
-              alt="flipKart logo"
-              className={classes.logo}
-            />
-
-            <Box className={classes.subContainer}>
-              <Typography className={classes.subHeading}>
-                Explore <span style={{ color: "#ffe500" }}>Plus</span>
-              </Typography>
-
+          <Box className={classes.container}>
+            <Link to="/">
               <img
-                src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png"
-                alt="plus-logo"
-                className={classes.subLogo}
+                src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png"
+                alt="flipKart logo"
+                className={classes.logo}
               />
-            </Box>
-          </Link>
+            </Link>
+
+            <Link to="/plus" className={classes.plus}>
+              <Box className={classes.subContainer}>
+                <Typography className={classes.subHeading}>
+                  Explore <span style={{ color: "#ffe500" }}>Plus</span>
+                </Typography>
+
+                <img
+                  src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png"
+                  alt="plus-logo"
+                  className={classes.subLogo}
+                />
+              </Box>
+            </Link>
+          </Box>
 
           <SearchBar />
 

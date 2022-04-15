@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
-  Dialog,
-  DialogContent,
   TextField,
   Typography,
   makeStyles,
@@ -16,12 +14,11 @@ const URL = "http://localhost:8080";
 const useStyle = makeStyles({
   dialogPaper: {
     height: "79vh",
-    width: "101vh",
-    maxWidth: "unset !important",
+    width: "120vh",
+    padding: "80px 0 40px 18%",
   },
   wraper: {
     display: "flex",
-    margin: -24,
   },
 
   container: {
@@ -30,7 +27,7 @@ const useStyle = makeStyles({
     backgroundPosition: "center 85%",
     backgroundRepeat: "no-repeat",
     height: "66.2vh",
-    width: "35%",
+    width: "30%",
     padding: "45px 35px",
     "& > *": {
       color: "#ffffff",
@@ -47,7 +44,9 @@ const useStyle = makeStyles({
   login: {
     display: "flex",
     flexDirection: "column",
+    width: "50%",
     padding: "35px 35px",
+    background: "#fff",
     "& > *": {
       marginTop: 20,
     },
@@ -167,7 +166,7 @@ const accountInitialValues = {
   },
 };
 
-function LoginDialog({ open, setOpen }) {
+function LoginPage({ open, setOpen }) {
   const classes = useStyle();
 
   const [login, setLogin] = useState(loginInitialValue);
@@ -243,12 +242,8 @@ function LoginDialog({ open, setOpen }) {
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      classes={{ paper: classes.dialogPaper }}
-    >
-      <DialogContent>
+    <Box style={{ background: "#f2f2f2" }}>
+      <Box className={classes.dialogPaper}>
         {account.view === "login" ? (
           <Box className={classes.wraper}>
             <Box className={classes.container}>
@@ -374,9 +369,9 @@ function LoginDialog({ open, setOpen }) {
             </Box>
           </Box>
         )}
-      </DialogContent>
-    </Dialog>
+      </Box>
+    </Box>
   );
 }
 
-export default LoginDialog;
+export default LoginPage;

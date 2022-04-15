@@ -2,7 +2,7 @@ import Carousel from "react-material-ui-carousel";
 import { makeStyles, Box } from "@material-ui/core";
 
 // data
-import { bannerData, dealData } from "../../Data/data";
+import { bannerData } from "../../Data/data";
 
 //Styling in component using class
 
