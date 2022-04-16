@@ -26,6 +26,9 @@ const useStyle = makeStyles({
     fontSize: 12,
     height: 24,
     cursor: "pointer",
+    textDecoration: "none",
+    display: "block",
+    color: "#fff",
     "&:hover": {
       textDecoration: "underline",
     },
@@ -121,9 +124,18 @@ function Footer() {
         <Box className={classes.subwraper}>
           <Typography className={classes.heading}>SOCIAL</Typography>
 
-          <Typography className={classes.text}>FaceBook</Typography>
-          <Typography className={classes.text}>Twiter</Typography>
-          <Typography className={classes.text}>Youtube</Typography>
+          <a href="https://www.facebook.com/" className={classes.text}>
+            FaceBook
+          </a>
+          <a
+            href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"
+            className={classes.text}
+          >
+            Twiter
+          </a>
+          <a href="https://www.youtube.com/" className={classes.text}>
+            Youtube
+          </a>
         </Box>
 
         <Box className={classes.mailBox}>

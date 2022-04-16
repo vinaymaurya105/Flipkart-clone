@@ -1,5 +1,6 @@
 import { navData } from "../../Data/data";
 import { Box, Typography, makeStyles } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 //Styling in component using class
 
@@ -16,6 +17,8 @@ const useStyle = makeStyles((theme) => ({
     textAlign: "center",
     padding: 12,
     cursor: "pointer",
+    textDecoration: "none",
+    color: "black",
     "&:hover": {
       color: "blue",
     },
@@ -36,13 +39,25 @@ function Navbar() {
 
   return (
     <Box className={classes.container}>
-      {navData.map((data, id) => (
-        <Box className={classes.wraper} key={id}>
-          <img src={data.url} alt="img" className={classes.image} />
+      {navData.map((data) => {
+        const { url, id, text } = data;
+        if (id === 8) {
+          return (
+            <Link to="/travel" className={classes.wraper} key={id}>
+              <img src={url} alt="img" className={classes.image} />
 
-          <Typography className={classes.text}>{data.text}</Typography>
-        </Box>
-      ))}
+              <Typography className={classes.text}>{text}</Typography>
+            </Link>
+          );
+        }
+        return (
+          <Box className={classes.wraper} key={id}>
+            <img src={url} alt="img" className={classes.image} />
+
+            <Typography className={classes.text}>{text}</Typography>
+          </Box>
+        );
+      })}
     </Box>
   );
 }

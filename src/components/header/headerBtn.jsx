@@ -90,6 +90,9 @@ function HeaderBtn() {
   const handleMouseLeave = () => {
     setOpenIcon(false);
   };
+  const handleClick = () => {
+    setOpen(true);
+  };
 
   return (
     <Box className={classes.container}>
@@ -103,7 +106,7 @@ function HeaderBtn() {
           <Button
             variant="contained"
             className={classes.loginBtn}
-            onClick={() => setOpen(true)}
+            onClick={handleClick}
           >
             Login
           </Button>

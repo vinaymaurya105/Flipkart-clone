@@ -4,8 +4,9 @@ import Header from "./components/header/header";
 import Home from "./components/Home/home";
 import Cart from "./components/Cart/cart";
 import Footer from "./components/footer/footer";
-import PlusZone from "./components/header/pluszone";
+import PlusZone from "./components/other/pluszone";
 import LoginPage from "./components/login/loginPage";
+import Travel from "./components/other/travel";
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
         <Route exact path="/plus" component={PlusZone} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/travel" component={Travel} />
       </Switch>
-
       <Footer />
     </BrowserRouter>
   );

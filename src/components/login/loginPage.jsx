@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -110,6 +110,7 @@ const useStyle = makeStyles({
     flexDirection: "column",
     width: "57%",
     padding: "10px 35px",
+    background: "#fff",
     "& > *": {
       marginTop: 10,
     },
