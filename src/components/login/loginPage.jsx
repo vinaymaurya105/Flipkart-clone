@@ -15,7 +15,7 @@ const useStyle = makeStyles({
   dialogPaper: {
     height: "79vh",
     width: "120vh",
-    padding: "80px 0 40px 18%",
+    padding: "35px 0 40px 18%",
   },
   wraper: {
     display: "flex",

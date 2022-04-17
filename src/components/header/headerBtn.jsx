@@ -21,6 +21,8 @@ import MoreT from "./tooltip/moreT";
 import LoginDialog from "../login/loginDialog";
 import AfterLoginT from "./tooltip/afterLoginT";
 
+import context from "context";
+
 const usestyle = makeStyles((theme) => ({
   loginBtn: {
     background: "#ffffff",
@@ -81,6 +83,9 @@ function HeaderBtn() {
   const [open, setOpen] = useState(false);
   const [openIcon, setOpenIcon] = useState(false);
 
+  const user = React.useContext(context);
+  console.log({ user });
+
   const classes = usestyle();
 
   const handleMouseOver = () => {
@@ -136,7 +141,7 @@ function HeaderBtn() {
       </Tooltip>
 
       <Link to="/cart" className={classes.wraper}>
-        <Badge badgeContent={5} color="error">
+        <Badge badgeContent={1} color="error">
           <ShoppingCartIcon />
         </Badge>
         <Typography className={classes.cart}>Cart</Typography>

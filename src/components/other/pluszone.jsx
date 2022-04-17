@@ -1,9 +1,9 @@
 import { Box, makeStyles, Typography } from "@material-ui/core";
-import { plusData } from "../../Data/data";
+import { plusData } from "../../data/data";
 
 const useStyle = makeStyles({
   wraper: {
-    padding: "65px 0 32px 20%",
+    padding: "15px 0 32px 20%",
 
     background: "#f2f2f2",
   },

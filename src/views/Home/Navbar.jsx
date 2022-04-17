@@ -1,4 +1,4 @@
-import { navData } from "../../Data/data";
+import { navData } from "../../data/data";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -40,22 +40,13 @@ function Navbar() {
   return (
     <Box className={classes.container}>
       {navData.map((data) => {
-        const { url, id, text } = data;
-        if (id === 8) {
-          return (
-            <Link to="/travel" className={classes.wraper} key={id}>
-              <img src={url} alt="img" className={classes.image} />
-
-              <Typography className={classes.text}>{text}</Typography>
-            </Link>
-          );
-        }
+        const { imgUrl, url, id, text } = data;
         return (
-          <Box className={classes.wraper} key={id}>
-            <img src={url} alt="img" className={classes.image} />
+          <Link key={id} to={url} className={classes.wraper}>
+            <img src={imgUrl} alt="img" className={classes.image} />
 
             <Typography className={classes.text}>{text}</Typography>
-          </Box>
+          </Link>
         );
       })}
     </Box>

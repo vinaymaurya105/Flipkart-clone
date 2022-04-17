@@ -2,7 +2,7 @@ import Carousel from "react-material-ui-carousel";
 import { makeStyles, Box } from "@material-ui/core";
 
 // data
-import { bannerData } from "../../Data/data";
+import { bannerData } from "../../data/data";
 
 //Styling in component using class
 
@@ -36,7 +36,7 @@ function Baner() {
         }}
       >
         {bannerData.map((image, id) => (
-          <img src={image} className={classes.img} key={id} />
+          <img alt={id} src={image} className={classes.img} key={id} />
         ))}
       </Carousel>
     </Box>
