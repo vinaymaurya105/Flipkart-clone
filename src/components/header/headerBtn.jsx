@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import {
   Box,
@@ -21,9 +21,20 @@ import MoreT from "./tooltip/moreT";
 import LoginDialog from "../login/loginDialog";
 import AfterLoginT from "./tooltip/afterLoginT";
 
-import context from "context";
+import { LoginContext } from "context";
 
 const usestyle = makeStyles((theme) => ({
+  container: {
+    margin: " 0 4% 0 auto ",
+    display: "flex",
+
+    "& > *": {
+      marginRight: 50,
+      alignItems: "center",
+      textDecoration: "none",
+      color: "#fff",
+    },
+  },
   loginBtn: {
     background: "#ffffff",
     color: "#2874f0",
@@ -35,18 +46,6 @@ const usestyle = makeStyles((theme) => ({
     boxShadow: "none",
     "&:hover": {
       background: "white",
-    },
-  },
-
-  container: {
-    margin: " 0 6% 0 auto ",
-    display: "flex",
-
-    "& > *": {
-      marginRight: 50,
-      alignItems: "center",
-      textDecoration: "none",
-      color: "#fff",
     },
   },
 
@@ -63,11 +62,12 @@ const usestyle = makeStyles((theme) => ({
 
   text: {
     marginTop: 3,
+    cursor: "pointer",
   },
 
   icon: {
     width: 16,
-    marginTop: 5,
+    // marginTop: 4,
   },
   cart: {
     marginLeft: 8,
@@ -82,9 +82,8 @@ const usestyle = makeStyles((theme) => ({
 function HeaderBtn() {
   const [open, setOpen] = useState(false);
   const [openIcon, setOpenIcon] = useState(false);
-
-  const user = React.useContext(context);
-  console.log({ user });
+  const [openLogin, setOpenLogin] = useState(false);
+  const { user, setUser } = useContext(LoginContext);
 
   const classes = usestyle();
 
@@ -95,19 +94,45 @@ function HeaderBtn() {
   const handleMouseLeave = () => {
     setOpenIcon(false);
   };
+  const handleLoginOver = () => {
+    setOpenLogin(true);
+  };
+  const handleLoginLeave = () => {
+    setOpenLogin(false);
+  };
   const handleClick = () => {
     setOpen(true);
   };
 
   return (
     <Box className={classes.container}>
-      <Tooltip
-        classes={{ arrow: classes.arrow }}
-        title={<LoginT />}
-        interactive={true}
-        arrow
-      >
-        <Link to="">
+      {user ? (
+        <Tooltip
+          title={<AfterLoginT setUser={setUser} />}
+          interactive={true}
+          arrow
+          classes={{ arrow: classes.arrow }}
+        >
+          <Box
+            className={classes.wraper}
+            onMouseOver={handleLoginOver}
+            onMouseLeave={handleLoginLeave}
+          >
+            <Typography>{user}</Typography>
+            {!openLogin ? (
+              <ExpandMoreIcon className={classes.icon} />
+            ) : (
+              <ExpandLessIcon className={classes.icon} />
+            )}
+          </Box>
+        </Tooltip>
+      ) : (
+        <Tooltip
+          classes={{ arrow: classes.arrow }}
+          title={<LoginT />}
+          interactive={true}
+          arrow
+        >
           <Button
             variant="contained"
             className={classes.loginBtn}
@@ -115,8 +140,8 @@ function HeaderBtn() {
           >
             Login
           </Button>
-        </Link>
-      </Tooltip>
+        </Tooltip>
+      )}
 
       <Tooltip
         title={<MoreT />}
@@ -124,20 +149,18 @@ function HeaderBtn() {
         arrow
         classes={{ arrow: classes.arrow }}
       >
-        <Link to="">
-          <Box
-            className={classes.iconWrap}
-            onMouseOver={handleMouseOver}
-            onMouseLeave={handleMouseLeave}
-          >
-            <Typography className={classes.text}>More</Typography>
-            {openIcon ? (
-              <ExpandLessIcon className={classes.icon} />
-            ) : (
-              <ExpandMoreIcon className={classes.icon} />
-            )}
-          </Box>
-        </Link>
+        <Box
+          className={classes.iconWrap}
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
+        >
+          <Typography className={classes.text}>More</Typography>
+          {openIcon ? (
+            <ExpandLessIcon className={classes.icon} />
+          ) : (
+            <ExpandMoreIcon className={classes.icon} />
+          )}
+        </Box>
       </Tooltip>
 
       <Link to="/cart" className={classes.wraper}>
@@ -147,7 +170,7 @@ function HeaderBtn() {
         <Typography className={classes.cart}>Cart</Typography>
       </Link>
 
-      <LoginDialog open={open} setOpen={setOpen} />
+      <LoginDialog open={open} setOpen={setOpen} setUser={setUser} />
     </Box>
   );
 }

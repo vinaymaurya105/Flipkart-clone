@@ -21,19 +21,19 @@ const useStyle = makeStyles({
     margin: " auto",
   },
 });
-const options = [
-  "Mumbai, IN",
-  "Hydrabad, IN",
-  "Kolkat, IN",
-  "Benluru, IN",
-  "New Delhi, IN",
-  "Jaypur, IN",
-  "Lucknow, IN",
-  "Varansi, IN",
-  "Ranchi, IN",
-  "Pune, IN",
-  "Goa, IN",
-];
+// const options = [
+//   "Mumbai, IN",
+//   "Hydrabad, IN",
+//   "Kolkat, IN",
+//   "Benluru, IN",
+//   "New Delhi, IN",
+//   "Jaypur, IN",
+//   "Lucknow, IN",
+//   "Varansi, IN",
+//   "Ranchi, IN",
+//   "Pune, IN",
+//   "Goa, IN",
+// ];
 function Travel() {
   const classes = useStyle();
   return (

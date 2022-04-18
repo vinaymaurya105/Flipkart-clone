@@ -1,12 +1,12 @@
-import { InputBase, makeStyles, alpha } from "@material-ui/core";
+import { InputBase, makeStyles } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 
 const useStyle = makeStyles((theme) => ({
   search: {
     borderRadius: 2,
     backgroundColor: "white",
-    marginLeft: 15,
-    width: "42%",
+    marginLeft: 20,
+    width: 520,
     height: 36,
     display: "flex",
   },

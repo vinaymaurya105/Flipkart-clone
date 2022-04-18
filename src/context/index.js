@@ -1,7 +1,14 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-const context = createContext({
-  profile: {},
-});
+export const LoginContext = createContext(null);
 
-export default context;
+const ContextProvider = ({ children }) => {
+  const [user, setUser] = useState("");
+  return (
+    <LoginContext.Provider value={{ user, setUser }}>
+      {children}
+    </LoginContext.Provider>
+  );
+};
+
+export default ContextProvider;

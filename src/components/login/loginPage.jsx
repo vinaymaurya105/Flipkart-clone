@@ -167,17 +167,12 @@ const accountInitialValues = {
   },
 };
 
-function LoginPage({ open, setOpen }) {
+function LoginPage({ setUser }) {
   const classes = useStyle();
 
   const [login, setLogin] = useState(loginInitialValue);
   const [signup, setSignup] = useState(signUpInitialValue);
   const [account, toggleAccount] = useState(accountInitialValues.login);
-
-  const handleClose = () => {
-    setOpen(false);
-    toggleAccount(accountInitialValues.login);
-  };
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -201,20 +196,19 @@ function LoginPage({ open, setOpen }) {
   };
 
   const loginUser = (e) => {
+    e.preventDefault();
+
     const { email, password } = login;
     axios
       .post(`${URL}/api/signin`, { email, password })
 
       .then((res) => {
-        console.log(res.data);
         console.log(res.data.user.fullName);
         setLogin(loginInitialValue);
-        handleClose();
-        alert("login Sucessful");
+        console.log("Login Sucessful");
       })
       .catch((err) => {
-        console.log(err);
-        console.log("clicked in catch section");
+        console.log(err.message);
       });
   };
 

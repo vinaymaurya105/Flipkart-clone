@@ -153,6 +153,7 @@ const signUpInitialValue = {
 const loginInitialValue = {
   email: "",
   password: "",
+  fullName: "",
 };
 const accountInitialValues = {
   login: {
@@ -167,7 +168,7 @@ const accountInitialValues = {
   },
 };
 
-function LoginDialog({ open, setOpen }) {
+function LoginDialog({ open, setOpen, setUser }) {
   const classes = useStyle();
 
   const [login, setLogin] = useState(loginInitialValue);
@@ -200,17 +201,18 @@ function LoginDialog({ open, setOpen }) {
     toggleAccount(accountInitialValues.login);
   };
 
-  const loginUser = (e) => {
+  const loginUser = async (e) => {
     const { email, password } = login;
-    axios
+    await axios
       .post(`${URL}/api/signin`, { email, password })
 
       .then((res) => {
         console.log(res.data);
-        console.log(res.data.user.fullName);
         setLogin(loginInitialValue);
         handleClose();
-        alert("login Sucessful");
+        setUser(res.data.user.fullName);
+        // console.log(localStorage.setItem("login", res.data));
+        console.log("login Sucessful");
       })
       .catch((err) => {
         console.log(err);
@@ -241,6 +243,7 @@ function LoginDialog({ open, setOpen }) {
         alert("Something went wrong");
       });
   };
+  // useEffect(() => {}, [login]);
 
   return (
     <Dialog

@@ -4,9 +4,10 @@ import Home from "views/Home";
 import Header from "components/header/header";
 import Cart from "components/Cart/cart";
 import Footer from "components/footer/footer";
-import PlusZone from "components/other/pluszone";
+import PlusZone from "views/other/pluszone";
 import LoginPage from "components/login/loginPage";
-import Travel from "components/other/travel";
+import Travel from "views/other/travel";
+import MyProfile from "views/other/MyProfile";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/travel" component={Travel} />
+        <Route exact path="/myprofile" component={MyProfile} />
       </Switch>
       <Footer />
     </BrowserRouter>

@@ -1,10 +1,10 @@
 import Routes from "./routes";
-import Context from "context";
+import ContextProvider from "context";
 
 const App = () => (
-  <Context.Provider value={{ user: "anil" }}>
-    <Routes />;
-  </Context.Provider>
+  <ContextProvider>
+    <Routes />
+  </ContextProvider>
 );
 
 export default App;

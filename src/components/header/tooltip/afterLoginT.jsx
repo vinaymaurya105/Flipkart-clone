@@ -50,15 +50,20 @@ const useStyle = makeStyles({
   },
 });
 
-function AfterLoginT() {
+function AfterLoginT({ setUser }) {
   const classes = useStyle();
+
+  const handleLogout = () => {
+    setUser("");
+    console.log("Logout successfully");
+  };
 
   return (
     <Box className={classes.container}>
-      <Box className={classes.wraper}>
+      <Link to="/myprofile" className={classes.wraper}>
         <AccountCircleIcon className={classes.icon} />
         <span className={classes.span}>My Profile</span>
-      </Box>
+      </Link>
 
       <Box className={classes.wraper}>
         <OfflineBoltIcon className={classes.icon} />
@@ -99,7 +104,7 @@ function AfterLoginT() {
         <NotificationsIcon className={classes.icon} />
         <span className={classes.span}>Notifications</span>
       </Box>
-      <Box className={classes.wraper}>
+      <Box className={classes.wraper} onClick={handleLogout}>
         <PowerSettingsNewIcon className={classes.icon} />
         <span className={classes.span}>Logout</span>
       </Box>
