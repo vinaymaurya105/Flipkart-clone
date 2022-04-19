@@ -1,4 +1,14 @@
-import { Box, TextField, makeStyles } from "@material-ui/core";
+import {
+  Box,
+  TextField,
+  makeStyles,
+  Radio,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+} from "@material-ui/core";
+import SwapHorizontalCircleIcon from "@mui/icons-material/SwapHorizontalCircle";
 
 const useStyle = makeStyles({
   container: {
@@ -10,15 +20,30 @@ const useStyle = makeStyles({
     justifyContent: "center",
     margin: "60px 8px 8px 8px ",
   },
-  input: {
+  wraper: {
     height: 120,
     background: "#fff",
     border: "1px solid #fff",
     borderRadius: 4,
-    padding: 24,
-    display: "flex",
+    padding: 22,
+
     width: "80%",
     margin: " auto",
+  },
+  radioBtn: {
+    display: "flex",
+    flexDirection: "row",
+    size: 10,
+  },
+  input: {
+    border: "1px solid #e0e0e0",
+    borderRadius: 5,
+    "&&:before": {
+      borderBottom: "1px solid #aaa8a8e1",
+    },
+    "&&:after": {
+      borderBottom: "1px solid #2874f0",
+    },
   },
 });
 // const options = [
@@ -42,8 +67,33 @@ function Travel() {
         <Box>
           <Box className={classes.container}>
             {/* <h1>Hello this is travel</h1> */}
-            <Box className={classes.input}>
-              <TextField />
+
+            <Box className={classes.wraper}>
+              <Box>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-label="way"
+                    name="way1"
+                    className={classes.radioBtn}
+                  >
+                    <FormControlLabel
+                      value="One-Way"
+                      control={<Radio />}
+                      label="One Way"
+                    />
+                    <FormControlLabel
+                      value="Round-Trip"
+                      control={<Radio />}
+                      label="Round Trip"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Box>
+              <Box>
+                <TextField variant="outlined" className={classes.input} />
+                <SwapHorizontalCircleIcon style={{ color: "blue" }} />
+                <TextField variant="outlined" className={classes.input} />
+              </Box>
             </Box>
           </Box>
         </Box>
