@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import CategoryHighlight from "./CategoryHIghlight";
 
 import highlightsData from "data/categoriesHighlights";
+import ProductList from "views/Products/ProductList";
 
 //Styling in component using class
 
@@ -25,13 +26,14 @@ function Home() {
       <Box className={classes.container}>
         <Baner />
       </Box>
-      {highlightsData.map((category) => (
+      {/* {highlightsData.map((category) => (
         <CategoryHighlight
           key={category.id}
           title={category.title}
           // data={category.items}
         />
-      ))}
+      ))} */}
+      <ProductList />
     </>
   );
 }
