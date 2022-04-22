@@ -5,6 +5,9 @@ import StarRateIcon from "@material-ui/icons/StarRate";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import FlashOnIcon from "@material-ui/icons/FlashOn";
+import axios from "axios";
+
+const URL = "http://localhost:8080";
 
 const useStyle = makeStyles({
   container: {
@@ -29,7 +32,6 @@ const useStyle = makeStyles({
   singleImgDiv: {
     padding: "13px 100px 13px 100px",
     border: "1px solid #f0f0f0",
-    borderLeft: "none",
   },
   singleImg: {
     height: 352,
@@ -40,7 +42,7 @@ const useStyle = makeStyles({
     margin: "5px 5px 20px 0",
   },
   textBox: {
-    marginLeft: 30,
+    marginLeft: 50,
     padding: 5,
   },
   rating: {
@@ -118,141 +120,182 @@ const useStyle = makeStyles({
     marginLeft: 40,
     color: "black",
   },
+  ratingTxt: {
+    margin: "20px 0 20px 10px",
+    color: "#878787",
+    fontSize: 15,
+    fontWeight: 600,
+  },
+  flipImg: {
+    height: 24,
+    margin: "20px 0 20px 10px",
+  },
+  extraPrice: {
+    marginTop: "-6px ",
+    color: "green ",
+    fontSize: 15,
+    fontWeight: 600,
+  },
 });
-function ProductDescription() {
+function ProductDescription(props) {
+  const [data, setData] = useState([]);
+
   const classes = useStyle();
+
+  useEffect(() => {
+    const { productId } = props.match.params;
+    axios
+      .get(`${URL}/api/${productId}`)
+      .then((res) => {
+        // console.log(res.data);
+        setData([res.data]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  if (data.length === 0) {
+    return null;
+  }
+
   return (
     <Box className={classes.container}>
       <Box className={classes.wraper}>
         <Box>
-          <Box className={classes.imgDiv}>
-            <img
-              src="https://rukminim2.flixcart.com/image/416/416/ktbu6q80/mobile/f/s/e/8s-5g-rmx3381-realme-original-imag6zhgra57dtqe.jpeg?q=70"
-              alt=""
-              className={classes.img}
-            />
-          </Box>
-          <Box className={classes.imgDiv}>
-            <img
-              src="https://rukminim2.flixcart.com/image/416/416/ktbu6q80/mobile/k/z/p/8s-5g-rmx3381-realme-original-imag6zhgavzwf6dm.jpeg?q=70"
-              alt="img"
-              className={classes.img}
-            />
-          </Box>
-          <Box className={classes.imgDiv}>
-            <img
-              src="https://rukminim2.flixcart.com/image/416/416/ktbu6q80/mobile/b/w/4/8s-5g-rmx3381-realme-original-imag6zhgqfaajc3q.jpeg?q=70"
-              alt="img"
-              className={classes.img}
-            />
-          </Box>
-          <Box className={classes.imgDiv}>
-            <img
-              src="https://rukminim2.flixcart.com/image/416/416/ktbu6q80/mobile/a/v/3/8s-5g-rmx3381-realme-original-imag6zhg5hhgqkba.jpeg?q=70"
-              alt="img"
-              className={classes.img}
-            />
-          </Box>
-          <Box className={classes.imgDiv}>
-            <img
-              src="https://rukminim2.flixcart.com/image/416/416/ktbu6q80/mobile/5/l/b/8s-5g-rmx3381-realme-original-imag6zhg7znchvu3.jpeg?q=70"
-              alt="img"
-              className={classes.img}
-            />
-          </Box>
-        </Box>
-        <Box>
-          <Box className={classes.singleImgDiv}>
-            <img
-              src="https://rukminim2.flixcart.com/image/416/416/ktbu6q80/mobile/f/s/e/8s-5g-rmx3381-realme-original-imag6zhgra57dtqe.jpeg?q=70"
-              alt=""
-              className={classes.singleImg}
-            />
-          </Box>
-
-          <Box className={classes.buttonDiv}>
-            <Button variant="contained" className={classes.orderBtn}>
-              <ShoppingCartIcon fontSize="small" />
-              Add to cart
-            </Button>
-
-            <Button variant="contained" className={classes.cartBtn}>
-              <FlashOnIcon fontSize="small" />
-              Order it
-            </Button>
-          </Box>
+          {data[0].productPictures.map((image) => {
+            const { _id, img } = image;
+            return (
+              <Box key={_id} className={classes.imgDiv}>
+                <img
+                  src={`${URL}/public/${img}`}
+                  alt="img"
+                  className={classes.img}
+                />
+              </Box>
+            );
+          })}
         </Box>
 
-        <Box className={classes.textBox}>
-          <Typography variant="h6">
-            realme 8s 5G (Universe Purple, 128 GB) (8 GB RAM)
-          </Typography>
+        {data.map((product) => {
+          const {
+            name,
+            price,
+            productPictures,
+            _id,
+            offerPrice,
+            description,
+            rating,
+          } = product;
 
-          <Box className={classes.rating}>
-            <Typography style={{ fontSize: 13 }}>4.4</Typography>
-            <StarRateIcon className={classes.star} />
-          </Box>
-          <Box className={classes.priceDiv}>
-            <Typography variant="h5" className={classes.price}>
-              ₹20,099
-            </Typography>
-            <Typography className={classes.oldPrice}>₹22,099</Typography>
-            <Typography className={classes.percent}>12% off</Typography>
-          </Box>
+          let totalPrice = offerPrice || price + 4000;
 
-          <Box>
-            <Typography variant="h6">Available offers</Typography>
+          return (
+            <Box key={_id} style={{ display: "flex" }}>
+              <Box>
+                <Box className={classes.singleImgDiv}>
+                  <img
+                    src={`${URL}/public/${productPictures[0].img}`}
+                    alt="img"
+                    className={classes.singleImg}
+                  />
+                </Box>
 
-            <Box style={{ display: "flex" }}>
-              <LocalOfferIcon className={classes.icon} />
+                <Box className={classes.buttonDiv}>
+                  <Button variant="contained" className={classes.orderBtn}>
+                    <ShoppingCartIcon fontSize="small" />
+                    Add to cart
+                  </Button>
 
-              <Typography className={classes.text}>
-                <b>Bank Offer</b> 5% Cashback on Flipkart Axis Bank Card
-                <span style={{ color: "blue" }}> T&C</span>
-              </Typography>
+                  <Button variant="contained" className={classes.cartBtn}>
+                    <FlashOnIcon fontSize="small" />
+                    Order it
+                  </Button>
+                </Box>
+              </Box>
+
+              <Box className={classes.textBox}>
+                <Typography variant="h6">{name}</Typography>
+                <Box style={{ display: "flex" }}>
+                  <Box className={classes.rating}>
+                    <Typography style={{ fontSize: 13 }}>
+                      {rating || 4.4}
+                    </Typography>
+                    <StarRateIcon className={classes.star} />
+                  </Box>
+                  <Typography className={classes.ratingTxt}>
+                    32904 Ratings & 3129 Reviews
+                  </Typography>
+                  <img
+                    src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png"
+                    alt=""
+                    className={classes.flipImg}
+                  />
+                </Box>
+                <Typography className={classes.extraPrice}>
+                  Extra ₹{totalPrice - price} off
+                </Typography>
+                <Box className={classes.priceDiv}>
+                  <Typography variant="h5" className={classes.price}>
+                    ₹{price}
+                  </Typography>
+                  <Typography className={classes.oldPrice}>
+                    ₹{totalPrice}
+                  </Typography>
+                  <Typography className={classes.percent}>
+                    {Math.floor(((totalPrice - price) / totalPrice) * 100)}% off
+                  </Typography>
+                </Box>
+
+                <Box>
+                  <Typography variant="h6">Available offers</Typography>
+
+                  <Box style={{ display: "flex" }}>
+                    <LocalOfferIcon className={classes.icon} />
+
+                    <Typography className={classes.text}>
+                      <b>Bank Offer</b> 5% Cashback on Flipkart Axis Bank Card
+                      <span style={{ color: "blue" }}> T&C</span>
+                    </Typography>
+                  </Box>
+
+                  <Box style={{ display: "flex" }}>
+                    <LocalOfferIcon className={classes.icon} />
+
+                    <Typography className={classes.text}>
+                      <b> Special Price</b> Get extra ₹2900 off (price inclusive
+                      of discount)
+                      <span style={{ color: "blue" }}> T&C</span>
+                    </Typography>
+                  </Box>
+
+                  <Box style={{ display: "flex" }}>
+                    <LocalOfferIcon className={classes.icon} />
+
+                    <Typography className={classes.text}>
+                      <b>Freebie</b> 25% Off on Discovery+ Subscription
+                      <span style={{ color: "blue" }}> T&C</span>
+                    </Typography>
+                  </Box>
+
+                  <Box style={{ display: "flex" }}>
+                    <LocalOfferIcon className={classes.icon} />
+
+                    <Typography className={classes.text}>
+                      <b>Freebie</b> Classes - 3 Class Pack
+                      <span style={{ color: "blue" }}> T&C</span>
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box className={classes.descDiv}>
+                  <Typography>Description</Typography>
+                  <Typography className={classes.descText}>
+                    {description}
+                  </Typography>
+                </Box>
+              </Box>
             </Box>
-
-            <Box style={{ display: "flex" }}>
-              <LocalOfferIcon className={classes.icon} />
-
-              <Typography className={classes.text}>
-                <b> Special Price</b> Get extra ₹2900 off (price inclusive of
-                discount)
-                <span style={{ color: "blue" }}> T&C</span>
-              </Typography>
-            </Box>
-
-            <Box style={{ display: "flex" }}>
-              <LocalOfferIcon className={classes.icon} />
-
-              <Typography className={classes.text}>
-                <b>Freebie</b> 25% Off on Discovery+ Subscription
-                <span style={{ color: "blue" }}> T&C</span>
-              </Typography>
-            </Box>
-
-            <Box style={{ display: "flex" }}>
-              <LocalOfferIcon className={classes.icon} />
-
-              <Typography className={classes.text}>
-                <b>Freebie</b> Classes - 3 Class Pack
-                <span style={{ color: "blue" }}> T&C</span>
-              </Typography>
-            </Box>
-          </Box>
-          <Box className={classes.descDiv}>
-            <Typography>Description</Typography>
-            <Typography className={classes.descText}>
-              The Samsung Galaxy F12 features a stylish design and innovative
-              features so that you can enjoy using the mobile phone for all that
-              you need. Thanks to its 6000 mAh battery, you will have a blast
-              using your phone for a long time while you stream content and much
-              more. It provides surround sound with Dolby Atmos so that you can
-              delve into a world of rich music. And, it’s equipped with features
-              that ensure the protection of your mobile phone.
-            </Typography>
-          </Box>
-        </Box>
+          );
+        })}
       </Box>
     </Box>
   );

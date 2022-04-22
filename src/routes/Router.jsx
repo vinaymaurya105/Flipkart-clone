@@ -21,11 +21,7 @@ function Router() {
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/travel" component={Travel} />
         <Route exact path="/myprofile" component={MyProfile} />
-        <Route
-          exact
-          path="/:productSlug/:productId/p"
-          component={ProductDescription}
-        />
+        <Route exact path="/:productId" component={ProductDescription} />
       </Switch>
       <Footer />
     </BrowserRouter>

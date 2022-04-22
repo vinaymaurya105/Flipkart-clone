@@ -48,24 +48,21 @@ function ProductList() {
     axios
       .get(`${URL}/api/products`)
       .then((res) => {
-        console.log(res.data[0].productPictures[0].img);
+        // console.log(res.data);
         setProduct(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
   return (
     <Box>
       <Box className={classes.container}>
         {product.map((items) => {
           const { _id, productPictures, name, price, slug } = items;
           return (
-            <Link
-              to={`/${slug}/${_id}/p`}
-              key={_id}
-              className={classes.imageDiv}
-            >
+            <Link key={_id} to={`/${_id}`} className={classes.imageDiv}>
               <Box>
                 <img
                   src={`${URL}/public/${productPictures[0].img}`}
