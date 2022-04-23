@@ -2,7 +2,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Home from "views/Home";
 import Header from "components/header/header";
-import Cart from "components/Cart/cart";
+import Cart from "components/Cart";
 import Footer from "components/footer/footer";
 import PlusZone from "views/other/pluszone";
 import LoginPage from "components/login/loginPage";
