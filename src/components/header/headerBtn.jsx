@@ -83,7 +83,7 @@ function HeaderBtn() {
   const [open, setOpen] = useState(false);
   const [openIcon, setOpenIcon] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
-  const { user, setUser } = useContext(LoginContext);
+  const { user, setUser, cartItems } = useContext(LoginContext);
 
   const classes = usestyle();
 
@@ -164,7 +164,10 @@ function HeaderBtn() {
       </Tooltip>
 
       <Link to="/cart" className={classes.wraper}>
-        <Badge badgeContent={1} color="error">
+        <Badge
+          badgeContent={cartItems.length && cartItems.length}
+          color="error"
+        >
           <ShoppingCartIcon />
         </Badge>
         <Typography className={classes.cart}>Cart</Typography>

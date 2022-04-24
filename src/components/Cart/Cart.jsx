@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { Badge, Box, Button, Typography, makeStyles } from "@material-ui/core";
 import GppGoodIcon from "@mui/icons-material/GppGood";
+import { LoginContext } from "../../context";
 
 const useStyle = makeStyles({
   container: {
@@ -177,8 +179,11 @@ const useStyle = makeStyles({
     color: "#878787",
   },
 });
+
 function Cart() {
   const classes = useStyle();
+  const { cartItems } = useContext(LoginContext);
+
   return (
     <Box className={classes.container}>
       <Box className={classes.wraper}>

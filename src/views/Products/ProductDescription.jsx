@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Box, makeStyles, Typography, Button } from "@material-ui/core";
 
 import StarRateIcon from "@material-ui/icons/StarRate";
@@ -6,6 +6,7 @@ import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import FlashOnIcon from "@material-ui/icons/FlashOn";
 import axios from "axios";
+import { LoginContext } from "context";
 
 const URL = "http://localhost:8080";
 
@@ -140,7 +141,17 @@ const useStyle = makeStyles({
 function ProductDescription(props) {
   const [data, setData] = useState([]);
 
+  const { setCartItems } = useContext(LoginContext);
+
   const classes = useStyle();
+
+  const handleAddCart = (id) => {
+    console.log("Button clicked");
+    // console.log(data);
+    setCartItems((prevState) => [...prevState, id]);
+
+    // props.history.push("/cart");
+  };
 
   useEffect(() => {
     const { productId } = props.match.params;
@@ -153,7 +164,7 @@ function ProductDescription(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [props.match.params]);
   if (data.length === 0) {
     return null;
   }
@@ -201,7 +212,11 @@ function ProductDescription(props) {
                 </Box>
 
                 <Box className={classes.buttonDiv}>
-                  <Button variant="contained" className={classes.orderBtn}>
+                  <Button
+                    variant="contained"
+                    className={classes.orderBtn}
+                    onClick={() => handleAddCart(_id)}
+                  >
                     <ShoppingCartIcon fontSize="small" />
                     Add to cart
                   </Button>

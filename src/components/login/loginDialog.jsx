@@ -207,10 +207,14 @@ function LoginDialog({ open, setOpen, setUser }) {
       .post(`${URL}/api/signin`, { email, password })
 
       .then((res) => {
-        console.log(res.data);
+        const {
+          data: { user },
+        } = res;
+        console.log(user);
         setLogin(loginInitialValue);
         handleClose();
-        setUser(res.data.user.fullName);
+        setUser(user.fullName);
+        localStorage.setItem("name", user.fullName);
         // console.log(localStorage.setItem("login", res.data));
         console.log("login Sucessful");
       })
