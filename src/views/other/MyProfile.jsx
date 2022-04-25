@@ -1,4 +1,8 @@
+import { useState, useEffect } from "react";
 import { Box, Typography, makeStyles } from "@material-ui/core";
+import axios from "axios";
+
+const URL = "http://localhost:8080";
 
 const useStyle = makeStyles({
   container: {
@@ -22,7 +26,7 @@ const useStyle = makeStyles({
   },
   wraper: {
     background: "#ffffff ",
-    padding: "35px 0 20px 30px",
+    padding: "35px 0 20px 50px",
     marginLeft: 50,
     width: "75%",
   },
@@ -37,35 +41,61 @@ const useStyle = makeStyles({
 });
 
 function MyProfile() {
+  const [profile, setProfile] = useState([]);
+
   const classes = useStyle();
+
+  const id = localStorage.getItem("id");
+
+  useEffect(() => {
+    axios
+      .get(`${URL}/api/signin/${id}`)
+      .then((res) => {
+        // console.log(res.data);
+        setProfile([res.data]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  if (profile.length === 0) {
+    return null;
+  }
+
   return (
-    <Box className={classes.container}>
-      <Box>
-        <Box className={classes.profile1}>
-          <Typography>Hello</Typography>
-          <Typography>Vinay Kumar Maurya</Typography>
-        </Box>
-        <Box className={classes.profile2}>
-          <Typography>MY ORDERS</Typography>
-        </Box>
-      </Box>
-      <Box className={classes.wraper}>
-        <Typography>Personal Information</Typography>
-        <Typography className={classes.textBox}>Vinay Kumar Maurya</Typography>
+    <Box>
+      {profile.map((user) => {
+        const { firstName, lastName, email, phone, _id } = user;
+        let fullName = `${firstName} ${lastName}`;
+        return (
+          <Box key={_id} className={classes.container}>
+            <Box>
+              <Box className={classes.profile1}>
+                <Typography>Hello</Typography>
+                <Typography>{fullName}</Typography>
+              </Box>
+              <Box className={classes.profile2}>
+                <Typography>MY ORDERS</Typography>
+              </Box>
+            </Box>
 
-        <Typography>Email Address</Typography>
-        <Typography className={classes.textBox}>
-          vinaymaurya105@gmail.com
-        </Typography>
+            <Box className={classes.wraper}>
+              <Typography>Personal Information</Typography>
+              <Typography className={classes.textBox}>{fullName}</Typography>
 
-        <Typography>Mobile Number</Typography>
-        <Typography className={classes.textBox}>+91-7007804032</Typography>
-
-        <Typography>FAQs</Typography>
-        <Typography>
-          What happens when I update My email address ( or mobile number)
-        </Typography>
-      </Box>
+              <Typography>Email Address</Typography>
+              <Typography className={classes.textBox}>{email}</Typography>
+              <Typography>Mobile Number</Typography>
+              <Typography className={classes.textBox}>+91-{phone}</Typography>
+              <Typography>FAQs</Typography>
+              <Typography>
+                What happens when I update My email address ( or mobile number)
+              </Typography>
+            </Box>
+          </Box>
+        );
+      })}
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -210,13 +210,13 @@ function LoginDialog({ open, setOpen, setUser }) {
         const {
           data: { user },
         } = res;
-        console.log(user);
+        console.log(res.data);
         setLogin(loginInitialValue);
-        handleClose();
         setUser(user.fullName);
         localStorage.setItem("name", user.fullName);
-        // console.log(localStorage.setItem("login", res.data));
-        console.log("login Sucessful");
+        localStorage.setItem("id", user._id);
+
+        handleClose();
       })
       .catch((err) => {
         console.log(err);
@@ -247,7 +247,6 @@ function LoginDialog({ open, setOpen, setUser }) {
         alert("Something went wrong");
       });
   };
-  // useEffect(() => {}, [login]);
 
   return (
     <Dialog

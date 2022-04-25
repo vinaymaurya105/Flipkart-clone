@@ -55,6 +55,7 @@ function AfterLoginT({ setUser }) {
 
   const handleLogout = () => {
     setUser("");
+    localStorage.clear();
     console.log("Logout successfully");
   };
 

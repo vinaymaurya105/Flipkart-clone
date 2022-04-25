@@ -1,19 +1,20 @@
 import { createContext, useState } from "react";
 
-const token = localStorage.getItem("token");
+const fullName = localStorage.getItem("name");
 
-let profile = null;
-if (token) {
-  // call api with token //getUserProfile
-  profile = {};
-}
+// let profile = null;
+// let cartItems = 0;
+// if (token) {
+//   // call api with token //getUserProfile
+//   profile = {};
+// }
 
-const cartContext = createContext([
-  {
-    id: "",
-    count: 1,
-  },
-]);
+// const cartContext = createContext([
+//   {
+//     id: "",
+//     count: 1,
+//   },
+// ]);
 
 // const data = {
 //   profile: {},
@@ -43,7 +44,7 @@ export const LoginContext = createContext(null);
 const ContextProvider = (props) => {
   const { children } = props;
 
-  const [user, setUser] = useState(profile);
+  const [user, setUser] = useState(fullName);
   const [cartItems, setCartItems] = useState([]);
 
   return (
