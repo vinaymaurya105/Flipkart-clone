@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
 import { Box, makeStyles } from "@material-ui/core";
-import axios from "axios";
 import { Link } from "react-router-dom";
+
+import axios from "axios";
 
 const URL = "http://localhost:8080";
 
 const useStyle = makeStyles({
   container: {
     display: "inline-block",
-
-    // justifyContent: "space-around",
   },
   imageDiv: {
     textAlign: "center",
@@ -19,6 +19,7 @@ const useStyle = makeStyles({
     float: "left",
     width: 193,
     padding: 18,
+
     "&:hover": {
       color: "#2874f0",
     },
@@ -40,21 +41,22 @@ const useStyle = makeStyles({
   },
 });
 
-function ProductList() {
-  const classes = useStyle();
+function ProductCategory(props) {
   const [product, setProduct] = useState([]);
 
+  const classes = useStyle();
+
   useEffect(() => {
+    const { categoryId } = props.match.params;
     axios
-      .get(`${URL}/api/products`)
+      .get(`${URL}/api/category/${categoryId}`)
       .then((res) => {
-        // console.log(res.data);
         setProduct(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [props.match.params]);
 
   return (
     <>
@@ -83,4 +85,4 @@ function ProductList() {
   );
 }
 
-export default ProductList;
+export default ProductCategory;

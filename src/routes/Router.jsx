@@ -9,6 +9,7 @@ import LoginPage from "components/login/loginPage";
 import Travel from "views/other/travel";
 import MyProfile from "views/other/MyProfile";
 import ProductDescription from "views/Products/ProductDescription";
+import ProductCategory from "views/other/ProductCategory";
 
 function Router() {
   return (
@@ -19,9 +20,10 @@ function Router() {
         <Route exact path="/plus" component={PlusZone} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/travel" component={Travel} />
+        <Route exact path="/category/travel" component={Travel} />
         <Route exact path="/myprofile" component={MyProfile} />
         <Route exact path="/:productId" component={ProductDescription} />
+        <Route exact path="/category/:categoryId" component={ProductCategory} />
       </Switch>
       <Footer />
     </BrowserRouter>

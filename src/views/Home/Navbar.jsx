@@ -42,7 +42,7 @@ function Navbar() {
       {navData.map((data) => {
         const { imgUrl, url, id, text } = data;
         return (
-          <Link key={id} to={url} className={classes.wraper}>
+          <Link key={id} to={`/category/${url}`} className={classes.wraper}>
             <img src={imgUrl} alt="img" className={classes.image} />
 
             <Typography className={classes.text}>{text}</Typography>

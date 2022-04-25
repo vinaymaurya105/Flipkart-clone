@@ -39,7 +39,6 @@ const fullName = localStorage.getItem("name");
 
 // }
 export const LoginContext = createContext(null);
-// console.log("Page is refreshed..", fullName);
 
 const ContextProvider = (props) => {
   const { children } = props;
