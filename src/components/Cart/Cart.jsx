@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Badge, Box, Button, Typography, makeStyles } from "@material-ui/core";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import { LoginContext } from "../../context";
+import axios from "axios";
 
 const useStyle = makeStyles({
   container: {
@@ -183,6 +184,21 @@ const useStyle = makeStyles({
 function Cart() {
   const classes = useStyle();
   const { cartItems } = useContext(LoginContext);
+  const [cartDetails, setData] = useState([
+    {
+      id: "",
+      title: "",
+      price: "",
+      count: 1,
+    },
+  ]);
+
+  useEffect(() => {
+    axios.get().then((response) => {
+      const { data } = response;
+      setData(data);
+    });
+  });
 
   return (
     <Box className={classes.container}>
