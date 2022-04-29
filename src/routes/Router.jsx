@@ -1,11 +1,11 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Home from "views/Home";
-import Header from "components/header/header";
+import Header from "components/header/Header";
 import Cart from "components/Cart";
-import Footer from "components/footer/footer";
+import Footer from "components/footer/Footer";
 import PlusZone from "views/other/pluszone";
-import LoginPage from "components/login/loginPage";
+import LoginPage from "components/login/LoginPage";
 import Travel from "views/other/travel";
 import MyProfile from "views/other/MyProfile";
 import ProductDescription from "views/Products/ProductDescription";

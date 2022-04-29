@@ -16,10 +16,10 @@ import { Link } from "react-router-dom";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 //import components
-import LoginT from "./tooltip/loginT";
-import MoreT from "./tooltip/moreT";
-import LoginDialog from "../login/loginDialog";
-import AfterLoginT from "./tooltip/afterLoginT";
+import LoginT from "./tooltip/LoginT";
+import MoreT from "./tooltip/MoreT";
+import LoginDialog from "../login/LoginDialog";
+import AfterLoginT from "./tooltip/AfterLoginT";
 
 import { LoginContext } from "context";
 

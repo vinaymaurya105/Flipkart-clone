@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import SearchBar from "./searchBar";
-import HeadreBtn from "./headerBtn";
+import SearchBar from "./SearchBar";
+import HeadreBtn from "./HeaderBtn";
 
 import {
   AppBar,
